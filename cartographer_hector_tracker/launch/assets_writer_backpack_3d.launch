@@ -15,14 +15,13 @@
 -->
 
 <launch>
-
-  <node name="cartographer" pkg="cartographer_ros"
-      type="cartographer_node" args="
-          -configuration_directory $(find cartographer_hector_tracker)/configuration_files
-          -configuration_basename argo_tracker_rc17.lua"
-      output="screen" respawn="true">
-    <remap from="points2" to="/scan_cloud_filtered"/> 
-    <remap from="imu" to="/imu/data"/>
+  <node name="cartographer_assets_writer" pkg="cartographer_ros" required="true"
+      type="cartographer_assets_writer" args="
+          -configuration_directory $(find cartographer_ros)/configuration_files
+          -configuration_basename assets_writer_backpack_3d.lua
+          -urdf_filename $(find cartographer_ros)/urdf/backpack_3d.urdf
+          -bag_filenames $(arg bag_filenames)
+          -pose_graph_filename $(arg pose_graph_filename)"
+      output="screen">
   </node>
-
 </launch>
