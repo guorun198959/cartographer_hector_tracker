@@ -21,6 +21,7 @@
           -configuration_basename hector_tracker.lua"
       output="screen">
     <remap from="points2" to="/spin_laser/vlp16"/> 
+    <remap from="odom" to="/odom_raw"/> 
     <remap from="imu" to="/imu/data" />
   </node>
 
